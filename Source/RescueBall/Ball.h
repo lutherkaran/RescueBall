@@ -52,10 +52,6 @@ public:
 	float fSpeedMultiplier = 2.f;
 	FInputModeUIOnly InputModeData;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
-	//	TSubclassOf<class UUserWidget> GameOverWidget;
-	//UUserWidget* GameOverWidgetInstance;
-
 };
 
 //#include "Camera/CameraComponent.h"

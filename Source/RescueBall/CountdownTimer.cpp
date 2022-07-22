@@ -8,11 +8,6 @@
 // Sets default values
 ACountdownTimer::ACountdownTimer()
 {
-
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	//FStringClassReference GameOverWidgeClasstRef(TEXT("/Game/Blueprints/GameOver_BP_C"));
-	//UE_LOG(LogTemp, Warning, TEXT("GAME OVER"));
-	//GameOverWidget = GameOverWidgeClasstRef.TryLoadClass<UUserWidget>();
 	FString Timer = "TIMER";
 	PrimaryActorTick.bCanEverTick = true;
 	CountDownText = CreateDefaultSubobject<UTextRenderComponent>((TEXT("CountDownNumber")));
@@ -29,11 +24,6 @@ void ACountdownTimer::BeginPlay()
 {
 	Super::BeginPlay();
 	GetWorldTimerManager().SetTimer(TimeHandler, this, &ACountdownTimer::AdvanceTimer, 1.0f, true);
-
-	if (GEngine)
-	{
-		//	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue, "ACountdown::BeginPlay()");
-	}
 	if (GameOverWidget)
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("GAME OVER"));
@@ -58,15 +48,11 @@ void ACountdownTimer::UpdateTimerDisplay()
 
 void ACountdownTimer::AdvanceTimer()
 {
-
 	--CountdownTime;
 	UpdateTimerDisplay();
 	if (CountdownTime < 1)
 	{
-
-		// We're done counting down, so stop running the timer.
 		GetWorldTimerManager().ClearTimer(TimeHandler);
-		// Perform any special actions we want to do when the timer ends.
 		CountDownHasFinished();
 	}
 
@@ -88,9 +74,6 @@ void ACountdownTimer::CountDownHasFinished(){
 			if (It)
 				It->fSpeed = 0;
 		}
-	
-	
-
 	}
 	//GetWorld()->GetFirstPlayerController()->ConsoleCommand("RestartLevel");
 }

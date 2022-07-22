@@ -8,15 +8,10 @@
 // Sets default values for this component's properties
 UGrabber::UGrabber()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
-	bHolding = false;
 
 	FString GrabString = "LMB";
 	GrabText = CreateDefaultSubobject<UTextRenderComponent>((TEXT("GrabText")));
-	//GrabText->SetWorldRotation(FRotator(0.f, 180.f, 0.f));
 	GrabText->SetText(FText(FText::FromString(GrabString)));
 	GrabText->SetWorldSize(100.f);
 	GrabText->SetVisibility(false);
@@ -29,8 +24,7 @@ UGrabber::UGrabber()
 void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
-	//GrabText->AttachTo(GetWorld()->GetFirstPlayerController()->GetRootComponent());
-	//UE_LOG(LogTemp, Warning, TEXT("Grabber Reporting"));
+	//Caching Physics Handle and Input Handle
 	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
 	InputHandle = GetOwner()->FindComponentByClass<UInputComponent>();
 
@@ -58,7 +52,6 @@ void UGrabber::Grab(){
 	};
 }
 void UGrabber::Release(){
-	bHolding = false;
 	//UE_LOG(LogTemp, Error, TEXT("GrabReleased"))
 	PhysicsHandle->ReleaseComponent();
 }
@@ -77,8 +70,6 @@ FHitResult UGrabber::HitResult(FVector _Vector, FRotator _Rotation){
 
 	if (Hit.GetActor()){
 		ShowGUI(Hit.GetActor());
-		//	float dotProduct = FVector::DotProduct(Hit.GetActor()->GetActorForwardVector(), GetWorld()->GetFirstPlayerController()->GetActorForwardVector());
-		//UE_LOG(LogTemp, Warning, TEXT("HIT AT: %s"), *(Hit.GetActor()->GetName()))
 	}
 	else{
 		GrabText->SetVisibility(false, true);

@@ -21,8 +21,6 @@ void UTrigger::BeginPlay()
 {
 	Super::BeginPlay();
 	InitialLocation = GetOwner()->GetActorLocation();
-	//UE_LOG(LogTemp, Warning, TEXT("InitialLocation: %s"), *GetOwner()->GetActorLocation().ToString())
-	//IwillOpen = GetWorld()->GetFirstPlayerController()->GetPawn();
 }
 
 
@@ -32,18 +30,13 @@ void UTrigger::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	if (GetTotalMass() > minimumWeight){
 		EOpen.Broadcast();
-		//TriggerIt();
-		//lastTime = GetWorld()->GetTimeSeconds();
-
 	}
 	else
 		EClose.Broadcast();
-		//GetOwner()->SetActorLocation(InitialLocation);
 }
 // ...
 
 float UTrigger::GetTotalMass(){
-	//UE_LOG(LogTemp, Warning, TEXT("MASS"));
 
 	float mass = 0.f;
 	TArray<AActor*> overlappingActors;
@@ -51,7 +44,6 @@ float UTrigger::GetTotalMass(){
 		PressurePlate->GetOverlappingActors(OUT overlappingActors);
 		for (auto& a : overlappingActors){
 			mass += a->FindComponentByClass<UPrimitiveComponent>()->GetMass();
-			//UE_LOG(LogTemp, Warning, TEXT("%s ACTOR: "), *a->GetName())
 		}
 	}
 	else{
