@@ -1,4 +1,5 @@
 # RescueBall
+Note: VS-2013 and Unreal Engine 4.9.2 is required.
 
 Get ready for a ball-rolling adventure like no other with Rescue Ball! In this thrilling game, you take control of a ball that's trapped in a treacherous maze, 
 with time quickly running out.
@@ -12,3 +13,5 @@ Keep your wits about you and your eyes peeled for these helpful items, and you j
 With each successful escape, you'll earn points and unlock new levels with even more challenging mazes and puzzles to solve. 
 But remember - the clock is always ticking, and danger lurks around every corner. 
 So roll your way through the maze, solve the puzzle, and escape to victory in Rescue Ball!
+
+![RescueBall](https://user-images.githubusercontent.com/35023765/229220942-171e159e-5203-43b8-b7ea-270bcce6fa79.png)
