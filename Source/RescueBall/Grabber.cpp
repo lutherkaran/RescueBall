@@ -84,7 +84,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	PlayerViewPointLocation = GetWorld()->GetFirstPlayerController()->GetPawn()->GetPawnViewLocation();
-	PlayerViewPointRotation = GetWorld()->GetFirstPlayerController()->GetPawn()->GetPawnViewLocation().Rotation();
+	PlayerViewPointRotation = GetWorld()->GetFirstPlayerController()->GetPawn()->FindComponentByClass<USpringArmComponent>()->GetComponentRotation();
 	//HitResult(PlayerViewPointLocation, PlayerViewPointRotation);
 	FVector lineTraceEnd = PlayerViewPointLocation + (PlayerViewPointRotation.Vector() *fReach);;
 	auto Hit = HitResult(PlayerViewPointLocation, PlayerViewPointRotation);
