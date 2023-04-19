@@ -25,16 +25,20 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
 	UPROPERTY(EditAnywhere)
+		USceneComponent *CenterOfMass;
+
+	UPROPERTY(EditAnywhere)
 		UStaticMeshComponent *Ball;
 	UPROPERTY(EditAnywhere)
 		USpringArmComponent *SpringArm;
 	UPROPERTY(EditAnywhere)
 		UCameraComponent* Camera;
 	//UPrimitiveComponent *OurActor2;
+	//USceneComponent* GetCenterOfMass();
 
 	void MoveForward(float x);
 	void MoveRight(float y);
-
+	
 	void CameraPitch(float _x);
 	void CameraYaw(float _x);
 

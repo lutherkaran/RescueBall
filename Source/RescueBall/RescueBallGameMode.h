@@ -13,7 +13,4 @@ class RESCUEBALL_API ARescueBallGameMode : public AGameMode
 {
 	GENERATED_BODY()
 	
-	
-	
-	
 };
